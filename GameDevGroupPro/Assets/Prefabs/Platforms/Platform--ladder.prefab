@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 649698186752747220}
   - component: {fileID: 5230159743134744253}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightWall_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8499567679884289139}
   - component: {fileID: 8735198439999854024}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ladder_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5013172461355036179}
   - component: {fileID: 5438745568534323119}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftWall_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,9 +281,9 @@ GameObject:
   - component: {fileID: 6655980194080981803}
   - component: {fileID: 6468225249552849594}
   - component: {fileID: 931787525988329404}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platform--ladder
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -409,7 +409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6314136221390920921}
   - component: {fileID: 6746614749005857797}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ladder_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

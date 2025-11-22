@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8066428254701663899}
   - component: {fileID: 7567177124129315449}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cave_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 941287197204787006}
   - component: {fileID: 2084297379884920}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BridgeMid_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 950022253233386577}
   - component: {fileID: 6044677831115647026}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BridgeMid_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1915234943675736269}
   - component: {fileID: 1542228999515994730}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BridgeMid_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3766422468423042407}
   - component: {fileID: 6346640954935442826}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UpHillBig_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,9 +461,9 @@ GameObject:
   - component: {fileID: 3005391806678620574}
   - component: {fileID: 6337211426412215797}
   - component: {fileID: 7111588473569442792}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hill--1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -591,7 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4306344026489096376}
   - component: {fileID: 5579633461855869040}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DownHillBig_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

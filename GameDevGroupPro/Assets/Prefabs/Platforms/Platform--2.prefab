@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2018004251586596894}
   - component: {fileID: 9040103772338933663}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MidPlatform_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7269745528404011710}
   - component: {fileID: 5357390124605006582}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlatformRightEnd_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4441160169392749832}
   - component: {fileID: 6391112205347432500}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlatformLeftEnd_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,9 +280,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7469324026894994174}
   - component: {fileID: 5606890618354433293}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platform--2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -362,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9206117608072712436}
   - component: {fileID: 5505865906560320911}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MidPlatform_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
