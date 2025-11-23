@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3400985244825521591}
   - component: {fileID: 4187092904076377602}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: platform--bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8643067810325194152}
   - component: {fileID: 8114976720562895640}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BridgeMid_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8751082042564739074}
   - component: {fileID: 194467032369553766}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BridgeLeft_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7739691382667013565}
   - component: {fileID: 2555527613045391255}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BridgeLeft_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4786017149395719571}
   - component: {fileID: 352933860659077198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BridgeMid_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
