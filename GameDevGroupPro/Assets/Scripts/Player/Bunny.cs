@@ -53,11 +53,11 @@ public class Bunny : MonoBehaviour
         {
             if(moveInput == 0)
             {
-                animator.Play("BunnyIdle");
+                animator.Play("Player_Idle");
             }
             else
             {
-                animator.Play("walkCycle");
+                animator.Play("Player_Walk");
             }
         }
         else
