@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Bunny : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 4f;
-    [SerializeField] private float jumpForce = 8f;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckRadius = 0.2f;
-    [SerializeField] private LayerMask groundLayer;
+    public float moveSpeed = 4f;
+    public float jumpForce = 8f;
+    public Transform groundCheck;
+    public float groundCheckRadius = 0.2f;
+    public LayerMask groundLayer;
 
     private new Rigidbody2D rigidbody;
     private bool isGrounded;
@@ -29,6 +29,21 @@ public class Bunny : MonoBehaviour
             {
                 rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
             }
+
+        // --- Ground check ---
+        // Create an invisible circle at the GroundCheck position.
+        // If this circle overlaps any collider on the "Ground" layer, player is grounded.
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        // --- Jump ---
+        // If player is grounded AND the Jump button (Spacebar by default) is pressed:
+        if (isGrounded && Input.GetButtonDown("Jump"))
+        {
+            // Set vertical velocity to jumpForce (launch upward).
+            // Horizontal velocity stays the same.
+            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
+        }
+        
 
         SetAnimation(moveInput);
     }
