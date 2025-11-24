@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3683905255849713529}
   - component: {fileID: 8108167992220798793}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MidPlatform_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,9 +100,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3524270562657005282}
   - component: {fileID: 150639307824214927}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platform--1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,7 +155,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 446955063310070465}
   - component: {fileID: 5094334817023283688}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlatformLeftEnd_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8304255085019604766}
   - component: {fileID: 7884391142726878480}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlatformRightEnd_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
