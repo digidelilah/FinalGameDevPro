@@ -406,7 +406,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0026020184, y: -0.05897637}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -416,7 +416,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.37, y: 0.32}
+  m_Size: {x: 0.10113716, y: 0.20204726}
   m_EdgeRadius: 0
 --- !u!1001 &934827098
 PrefabInstance:
@@ -574,20 +574,24 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3829427849864934838, guid: 70486772345c3994f945d8403d33b904, type: 3}
+      propertyPath: jumpForce
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829427849864934838, guid: 70486772345c3994f945d8403d33b904, type: 3}
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 1629215404}
     - target: {fileID: 4035456163565369421, guid: 70486772345c3994f945d8403d33b904, type: 3}
       propertyPath: m_Color.b
-      value: 0.37254903
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4035456163565369421, guid: 70486772345c3994f945d8403d33b904, type: 3}
       propertyPath: m_Color.g
-      value: 0.37254903
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4035456163565369421, guid: 70486772345c3994f945d8403d33b904, type: 3}
       propertyPath: m_Color.r
-      value: 0.37254903
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4035456163565369421, guid: 70486772345c3994f945d8403d33b904, type: 3}
       propertyPath: m_SortingOrder
@@ -595,11 +599,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7440054978598770186, guid: 70486772345c3994f945d8403d33b904, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.44
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 7440054978598770186, guid: 70486772345c3994f945d8403d33b904, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.82
+      value: -1.84
       objectReference: {fileID: 0}
     - target: {fileID: 7440054978598770186, guid: 70486772345c3994f945d8403d33b904, type: 3}
       propertyPath: m_LocalPosition.z
@@ -637,7 +641,8 @@ PrefabInstance:
       propertyPath: m_Animations.Array.size
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8171192830151981731, guid: 70486772345c3994f945d8403d33b904, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
