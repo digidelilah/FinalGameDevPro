@@ -25,4 +25,23 @@ public class MovingPlatform : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // make player a child so they ride the platform
+            collision.transform.SetParent(transform);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // detach player when leaving
+            collision.transform.SetParent(null);
+        }
+    }
+
 }
