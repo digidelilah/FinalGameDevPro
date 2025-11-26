@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class Bunny : MonoBehaviour
 {
+    public int health = 100; // <----------------------------new by D
+
     public float moveSpeed = 4f;
     public float jumpForce = 8f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
 
+
+    private SpriteRenderer spriteRenderer; // <----------------------------new by D
     private new Rigidbody2D rigidbody;
     private bool isGrounded;
 
@@ -20,6 +24,7 @@ public class Bunny : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<spriteRenderer>(); // <----------------------------new by D
 
         extraJumps = extraJumpsValue;
     }
@@ -101,4 +106,16 @@ public class Bunny : MonoBehaviour
             }
         }
     }
+    /*
+    // detect collision with the player // <----------------------------new by D
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // if the colliding object is tagged "Player"
+        if (collision.gameObject.CompareTag("Player"))
+        { 
+            // access the playerhealth and apply damage
+            collision.gameObject.GetComponent<Player .............health
+        }
+    }
+    */
 }
