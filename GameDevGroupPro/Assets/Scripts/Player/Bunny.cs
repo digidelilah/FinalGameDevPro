@@ -13,22 +13,51 @@ public class Bunny : MonoBehaviour
 
     private Animator animator;
 
+    public int extraJumpsValue = 1;
+    private int extraJumps;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        extraJumps = extraJumpsValue;
     }
 
-    
+
     void Update()
     {
+
         float moveInput = Input.GetAxis("Horizontal");
         rigidbody.linearVelocity = new Vector2(moveInput * moveSpeed, rigidbody.linearVelocity.y);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) 
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            //moveInput(Vector3.left);
+        }
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            //moveInput(Vector3.right);
+        }
+
+        if (isGrounded)
+        {
+            extraJumps = extraJumpsValue;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isGrounded)
+                rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
+            else if (extraJumps >0)
             {
                 rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
+                extraJumps--;
             }
+        }
+
 
         // --- Ground check ---
         // Create an invisible circle at the GroundCheck position.
@@ -43,7 +72,7 @@ public class Bunny : MonoBehaviour
             // Horizontal velocity stays the same.
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
         }
-        
+
 
         SetAnimation(moveInput);
     }
@@ -51,7 +80,7 @@ public class Bunny : MonoBehaviour
     {
         if (isGrounded)
         {
-            if(moveInput == 0)
+            if (moveInput == 0)
             {
                 animator.Play("Player_Idle");
             }
@@ -62,9 +91,13 @@ public class Bunny : MonoBehaviour
         }
         else
         {
-           if(rigidbody.linearVelocityY > 0)
+            if (rigidbody.linearVelocityY > 0)
             {
-                animator.Play("Jump");
+                animator.Play("Player_Jump");
+            }
+            else
+            {
+                animator.Play("Player_Fall");
             }
         }
     }
