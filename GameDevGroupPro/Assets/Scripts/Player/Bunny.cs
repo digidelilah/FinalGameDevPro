@@ -1,13 +1,18 @@
 using UnityEngine;
+using System.Collections; // <----------------------------new by D
 
 public class Bunny : MonoBehaviour
 {
+    public int health = 100; // <----------------------------new by D
+
     public float moveSpeed = 4f;
     public float jumpForce = 8f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
 
+
+    private SpriteRenderer spriteRenderer; // <----------------------------new by D
     private new Rigidbody2D rigidbody;
     private bool isGrounded;
 
@@ -20,6 +25,7 @@ public class Bunny : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); // <----------------------------new by D
 
         extraJumps = extraJumpsValue;
     }
@@ -100,5 +106,34 @@ public class Bunny : MonoBehaviour
                 animator.Play("Player_Fall");
             }
         }
+    }
+
+    // detect collision with the player // <----------------------------new by D
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Damage")
+        {
+            health -= 25;
+            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
+            StartCoroutine(BlinkRed());
+
+        if(health <= 0)
+        {
+            Die();
+        }
+        }
+    }
+
+    private IEnumerator BlinkRed()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
+    }
+
+    private void Die()
+    {
+        // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); // may be renamed to our own scenes for testing
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Dayna");
     }
 }
