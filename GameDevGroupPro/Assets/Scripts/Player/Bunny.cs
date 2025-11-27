@@ -1,18 +1,21 @@
 using UnityEngine;
-using System.Collections; // <----------------------------new by D
+using System.Collections;
+using UnityEngine.UI; // <--------------------------new by D
+
 
 public class Bunny : MonoBehaviour
 {
-    public int health = 100; // <----------------------------new by D
+    public int health = 100; 
 
     public float moveSpeed = 4f;
     public float jumpForce = 8f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
+    public Image healthImage; // <--------------------------new by D
 
 
-    private SpriteRenderer spriteRenderer; // <----------------------------new by D
+    private SpriteRenderer spriteRenderer; 
     private new Rigidbody2D rigidbody;
     private bool isGrounded;
 
@@ -25,7 +28,7 @@ public class Bunny : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>(); // <----------------------------new by D
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         extraJumps = extraJumpsValue;
     }
@@ -47,6 +50,8 @@ public class Bunny : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             //moveInput(Vector3.right);
         }
+
+        healthImage.fillAmount = health / 100f;// <--------------------------new by D
 
         if (isGrounded)
         {
@@ -108,7 +113,7 @@ public class Bunny : MonoBehaviour
         }
     }
 
-    // detect collision with the player // <----------------------------new by D
+    // detect collision with the player 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Damage")
