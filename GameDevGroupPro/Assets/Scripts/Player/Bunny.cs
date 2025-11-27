@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections; // <----------------------------new by D
 
 public class Bunny : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class Bunny : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<spriteRenderer>(); // <----------------------------new by D
+        spriteRenderer = GetComponent<SpriteRenderer>(); // <----------------------------new by D
 
         extraJumps = extraJumpsValue;
     }
@@ -106,16 +107,33 @@ public class Bunny : MonoBehaviour
             }
         }
     }
-    /*
+
     // detect collision with the player // <----------------------------new by D
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // if the colliding object is tagged "Player"
-        if (collision.gameObject.CompareTag("Player"))
-        { 
-            // access the playerhealth and apply damage
-            collision.gameObject.GetComponent<Player .............health
+        if (collision.gameObject.tag == "Damage")
+        {
+            health -= 25;
+            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
+            StartCoroutine(BlinkRed());
+
+        if(health <= 0)
+        {
+            Die();
+        }
         }
     }
-    */
+
+    private IEnumerator BlinkRed()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
+    }
+
+    private void Die()
+    {
+        // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); // may be renamed to our own scenes for testing
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Dayna");
+    }
 }
