@@ -1,25 +1,37 @@
 using UnityEngine;
 
+
+
+
 public class Enemies : MonoBehaviour
 {
     public float speed = 2f;
-    public float moveDistance = 1f;
-    private Rigidbody2D rb;
-    private Vector2 startPos;
-    private int direction = 1;
+    public Transform[] points;
+
+    private int i;
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        startPos = transform.position;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
-
-        if (Mathf.Abs(transform.position.x - startPos.x) >= moveDistance)
+        if (Vector2.Distance(transform.position, points[i].position) < 0.25f)
         {
-            direction *= -1;
+            i++;
+            if (i == points.Length)
+            {
+                i = 0;
+            }
         }
+
+        transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
+
+        spriteRenderer.flipX = (transform.position.x - points[i].position.x) < 0f;
     }
 }
+    
+          
+
