@@ -187,7 +187,6 @@ GameObject:
   - component: {fileID: 1616352975}
   - component: {fileID: 1616352974}
   - component: {fileID: 1616352973}
-  - component: {fileID: 1616352976}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -274,3 +273,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1616352975}
+  - {fileID: 489038053}
