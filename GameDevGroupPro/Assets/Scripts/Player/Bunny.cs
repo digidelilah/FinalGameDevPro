@@ -133,13 +133,14 @@ public class Bunny : MonoBehaviour
     private IEnumerator BlinkRed()
     {
         spriteRenderer.color = Color.red;
+        animator.Play("Player_Hurt");
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = Color.white;
     }
-
+    
     private void Die()
     {
         // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); // may be renamed to our own scenes for testing
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Dayna");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Test");
     }
 }
