@@ -1,13 +1,22 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.UI; // <--------------------------new by D
+
 
 public class Bunny : MonoBehaviour
 {
+    public int carrots; // <--------------- new by R
+    public int health = 100; 
+
     public float moveSpeed = 4f;
     public float jumpForce = 8f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
+    public Image healthImage; // <--------------------------new by D
 
+
+    private SpriteRenderer spriteRenderer; 
     private new Rigidbody2D rigidbody;
     private bool isGrounded;
 
@@ -20,6 +29,7 @@ public class Bunny : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         extraJumps = extraJumpsValue;
     }
@@ -41,6 +51,8 @@ public class Bunny : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             //moveInput(Vector3.right);
         }
+
+        healthImage.fillAmount = health / 100f;// <--------------------------new by D
 
         if (isGrounded)
         {
@@ -100,5 +112,34 @@ public class Bunny : MonoBehaviour
                 animator.Play("Player_Fall");
             }
         }
+    }
+
+    // detect collision with the player 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Damage")
+        {
+            health -= 25;
+            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
+            StartCoroutine(BlinkRed());
+
+        if(health <= 0)
+        {
+            Die();
+        }
+        }
+    }
+
+    private IEnumerator BlinkRed()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
+    }
+
+    private void Die()
+    {
+        // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); // may be renamed to our own scenes for testing
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Dayna");
     }
 }
