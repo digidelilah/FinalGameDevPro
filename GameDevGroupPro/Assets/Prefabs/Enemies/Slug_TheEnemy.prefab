@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4069650571403601421}
   - component: {fileID: 3982964588519043726}
   - component: {fileID: 2404492421023496566}
+  - component: {fileID: -4479105354512931709}
   m_Layer: 0
   m_Name: Slug_TheEnemy
   m_TagString: Damage
@@ -188,3 +189,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4479105354512931709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4353928614793311185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1225e6c7882b047a0bb7017d4e986b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemies
+  speed: 2
+  points: []
