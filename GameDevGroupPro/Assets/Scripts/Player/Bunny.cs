@@ -5,8 +5,9 @@ using UnityEngine.UI; // <--------------------------new by D
 
 public class Bunny : MonoBehaviour
 {
-    public int health = 100; 
+    public int health = 100;
 
+    public int carrots; // <--------------- new by R
     public float moveSpeed = 4f;
     public float jumpForce = 8f;
     public Transform groundCheck;
