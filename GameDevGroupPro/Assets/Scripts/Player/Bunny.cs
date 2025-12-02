@@ -141,6 +141,6 @@ public class Bunny : MonoBehaviour
     private void Die()
     {
         // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); // may be renamed to our own scenes for testing
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Test");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Dayna");
     }
 }
