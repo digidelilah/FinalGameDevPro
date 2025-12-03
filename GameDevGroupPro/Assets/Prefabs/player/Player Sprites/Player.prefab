@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7809931411337215426}
   - component: {fileID: 8719322174524917590}
   - component: {fileID: 3203540744126345964}
+  - component: {fileID: 8803510733803742303}
+  - component: {fileID: 7367842560117078071}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -108,15 +110,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bunny
   carrot: 0
-  health: 100
-  moveSpeed: 4
+  health: 3
   jumpForce: 6
+  extraJumpsValue: 1
+  moveSpeed: 4
   groundCheck: {fileID: 2934742705858795260}
   groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  extraJumpsValue: 1
 --- !u!95 &7809931411337215426
 Animator:
   serializedVersion: 7
@@ -212,6 +214,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.10113716, y: 0.20204726}
   m_EdgeRadius: 0
+--- !u!114 &8803510733803742303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209643470745206818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3d52672a7dc2740b3e8b76a34782fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  HealthFull: {fileID: 0}
+  HealthHalf: {fileID: 0}
+  HealthOne: {fileID: 0}
+  HealthDead: {fileID: 0}
+--- !u!114 &7367842560117078071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209643470745206818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2b480b1de069c43bb4df96fff2e453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  audioClips: []
 --- !u!1 &5492844132747032399
 GameObject:
   m_ObjectHideFlags: 0
