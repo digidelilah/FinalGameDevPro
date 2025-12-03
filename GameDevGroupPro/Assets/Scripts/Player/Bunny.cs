@@ -5,15 +5,14 @@ using UnityEngine.UI; // <--------------------------new by D
 
 public class Bunny : MonoBehaviour
 {
-    public int health = 100;
+    public int health = 100; 
 
-    public int carrots; // <--------------- new by R
     public float moveSpeed = 4f;
     public float jumpForce = 8f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
-    public Image healthImage; // <--------------------------new by D
+    //public Image healthImage; // <--------------------------new by D
 
 
     private SpriteRenderer spriteRenderer; 
@@ -52,7 +51,7 @@ public class Bunny : MonoBehaviour
             //moveInput(Vector3.right);
         }
 
-        healthImage.fillAmount = health / 100f;// <--------------------------new by D
+        //healthImage.fillAmount = health / 100f;// <--------------------------new by D
 
         if (isGrounded)
         {
