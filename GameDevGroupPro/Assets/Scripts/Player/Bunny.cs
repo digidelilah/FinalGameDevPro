@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI; // <--------------------------new by D
+using UnityEngine.UI;
+using UnityEditor.Experimental.GraphView; // <--------------------------new by D
 
 
 public class Bunny : MonoBehaviour
@@ -119,15 +120,28 @@ public class Bunny : MonoBehaviour
     {
         if (collision.gameObject.tag == "Damage")
         {
-            health -= 25;
+            health -= 1;
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
             StartCoroutine(BlinkRed());
+        }
 
-        if(health <= 0)
+        if (health <= 3)
+        {
+            
+        }
+        else if (health <= 2)
+        {
+
+        }
+        else if (health <= 1 )
+        {
+
+        }
+        else 
         {
             Die();
         }
-        }
+        
     }
 
     private IEnumerator BlinkRed()
@@ -141,6 +155,8 @@ public class Bunny : MonoBehaviour
     private void Die()
     {
         // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); // may be renamed to our own scenes for testing
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Dayna");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Test");
     }
+
+   
 }

@@ -9,8 +9,17 @@ public class CollectibleCarrot : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Bunny player = collision.gameObject.GetComponent<Bunny>();
-            player.carrot += 1;
-            Destroy(gameObject);
+            if(gameObject.tag == "Carrot")
+            {
+                player.carrot += 1;
+                Destroy(gameObject);
+            }
+            if (gameObject.tag == "Gem")
+            {
+                player.carrot += 5;
+                Destroy(gameObject);
+            }
+
         }
     }
 }
