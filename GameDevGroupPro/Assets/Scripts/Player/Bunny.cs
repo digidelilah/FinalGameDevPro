@@ -184,6 +184,7 @@ public class Bunny : MonoBehaviour
         // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); // may be renamed to our own scenes for testing
         UnityEngine.SceneManagement.SceneManager.LoadScene("Test");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -191,6 +192,7 @@ public class Bunny : MonoBehaviour
         if (collision.CompareTag("BouncePad"))
         {
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce * 2f);
+            SoundManager.Instance.PlaySFX("SHROOM");
         }
     }
 }
