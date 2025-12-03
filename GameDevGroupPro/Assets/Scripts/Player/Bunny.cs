@@ -168,6 +168,7 @@ public class Bunny : MonoBehaviour
         if(collision.CompareTag("BouncePad"))
         {
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce * 2f);
+            SoundManager.Instance.PlaySFX("SHROOM");
         }
     }
 }
