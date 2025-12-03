@@ -5,6 +5,7 @@ using UnityEngine.UI; // <--------------------------new by D
 
 public class Bunny : MonoBehaviour
 {
+    public int carrot;
     public int health = 100; 
 
     public float moveSpeed = 4f;
