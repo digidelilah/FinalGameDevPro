@@ -286,10 +286,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   audioClips:
   - key: JUMP
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 82a8eef0a83444da6b372762f5175236, type: 3}
   - key: HURT
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: d748e3e2327d44018b288b6c2ba6adf4, type: 3}
   - key: CARROT
+    clip: {fileID: 8300000, guid: 0b5de865586844050b285d4a3fd6b033, type: 3}
+  - key: GEM
     clip: {fileID: 8300000, guid: b6d2ea8d304d148f48e5c9254de0ec6d, type: 3}
 --- !u!82 &1276984143
 AudioSource:
