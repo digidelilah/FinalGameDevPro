@@ -7,7 +7,7 @@ using UnityEditor.Experimental.GraphView; // <--------------------------new by D
 public class Bunny : MonoBehaviour
 {
     public int carrot;
-    public int health = 100;
+    public int health = 3;
 
     // --- Jump variables ---
     public float jumpForce = 8f;           // Base jump force (vertical speed)
@@ -27,6 +27,7 @@ public class Bunny : MonoBehaviour
     private bool isGrounded;
 
     private Animator animator;
+    private GameManager gameManager;
 
     
 
@@ -35,6 +36,8 @@ public class Bunny : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        gameManager = FindFirstObjectByType<GameManager>();
+        gameManager.UpdateBunnyHealth(health);
 
         extraJumps = extraJumpsValue;
     }
@@ -136,23 +139,12 @@ public class Bunny : MonoBehaviour
             health -= 1;
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
             StartCoroutine(BlinkRed());
-        }
-
-        if (health <= 3)
-        {
-            
-        }
-        else if (health <= 2)
-        {
-
-        }
-        else if (health <= 1 )
-        {
-
-        }
-        else 
-        {
-            Die();
+            gameManager.UpdateBunnyHealth(health);
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                Die();
+            }
         }
         
     }
