@@ -137,6 +137,7 @@ public class Bunny : MonoBehaviour
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
             StartCoroutine(BlinkRed());
             gameManager.UpdateBunnyHealth(health);
+            
             if (health <= 0)
             {
                 Destroy(gameObject);
@@ -151,6 +152,7 @@ public class Bunny : MonoBehaviour
         spriteRenderer.color = Color.red;
         animator.Play("Player_Hurt");
         yield return new WaitForSeconds(0.1f);
+        SoundManager.Instance.PlaySFX("HURT");
         spriteRenderer.color = Color.white;
     }
     
@@ -158,6 +160,7 @@ public class Bunny : MonoBehaviour
     {
         // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); // may be renamed to our own scenes for testing
         UnityEngine.SceneManagement.SceneManager.LoadScene("Test");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
