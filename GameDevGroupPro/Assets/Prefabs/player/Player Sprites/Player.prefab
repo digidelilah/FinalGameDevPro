@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c8c59e8c62f094bb1015ed0c9d4c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bunny
+  carrot: 0
+  health: 100
   moveSpeed: 4
   jumpForce: 6
   groundCheck: {fileID: 2934742705858795260}
