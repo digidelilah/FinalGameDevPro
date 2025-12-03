@@ -10,6 +10,7 @@ public class CollectibleCarrot : MonoBehaviour
         {
             Bunny player = collision.gameObject.GetComponent<Bunny>();
             player.carrot += 1;
+            SoundManager.Instance.PlaySFX("CARROT", 0.4f);
             Destroy(gameObject);
         }
     }

@@ -6,10 +6,15 @@ using UnityEngine.UI; // <--------------------------new by D
 public class Bunny : MonoBehaviour
 {
     public int carrot;
-    public int health = 100; 
+    public int health = 100;
+
+    // --- Jump variables ---
+    public float jumpForce = 8f;           // Base jump force (vertical speed)
+    public int extraJumpsValue = 1;        // How many extra jumps allowed (1 = double jump, 2 = triple jump)
+    private int extraJumps;                // Counter for jumps left
 
     public float moveSpeed = 4f;
-    public float jumpForce = 8f;
+    
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
@@ -22,8 +27,7 @@ public class Bunny : MonoBehaviour
 
     private Animator animator;
 
-    public int extraJumpsValue = 1;
-    private int extraJumps;
+    
 
     void Start()
     {
@@ -54,19 +58,28 @@ public class Bunny : MonoBehaviour
 
         //healthImage.fillAmount = health / 100f;// <--------------------------new by D
 
+        // Reset extra jumps when grounded
         if (isGrounded)
         {
             extraJumps = extraJumpsValue;
         }
 
+        // --- Jump & Double Jump ---
+        // If Space is pressed:
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded)
-                rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
-            else if (extraJumps >0)
             {
+                // Normal jump
                 rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
-                extraJumps--;
+                SoundManager.Instance.PlaySFX("JUMP");
+            }
+            else if (extraJumps > 0)
+            {
+                // Extra jump (double or triple depending on extraJumpsValue)
+                rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
+                extraJumps--; // Reduce available extra jumps
+                SoundManager.Instance.PlaySFX("JUMP");
             }
         }
 
@@ -78,12 +91,12 @@ public class Bunny : MonoBehaviour
 
         // --- Jump ---
         // If player is grounded AND the Jump button (Spacebar by default) is pressed:
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        /*if (isGrounded && Input.GetButtonDown("Jump"))
         {
             // Set vertical velocity to jumpForce (launch upward).
             // Horizontal velocity stays the same.
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
-        }
+        }*/
 
 
         SetAnimation(moveInput);
@@ -122,8 +135,9 @@ public class Bunny : MonoBehaviour
             health -= 25;
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
             StartCoroutine(BlinkRed());
+            SoundManager.Instance.PlaySFX("HURT");
 
-        if(health <= 0)
+            if (health <= 0)
         {
             Die();
         }
