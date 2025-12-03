@@ -8,10 +8,12 @@ public class Enemies : MonoBehaviour
 
     private int i;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -28,5 +30,18 @@ public class Enemies : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
 
         spriteRenderer.flipX = (transform.position.x - points[i].position.x) < 0f;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Bunny player = collision.gameObject.GetComponent<Bunny>();
+            if (gameObject.tag == "Damage")
+            {
+                animator.Play("Slug_Death");
+                Destroy(gameObject, 0.5f);
+            }
+        }
     }
 }
