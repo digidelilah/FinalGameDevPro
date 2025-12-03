@@ -29,8 +29,6 @@ public class Bunny : MonoBehaviour
     private Animator animator;
     private GameManager gameManager;
 
-    
-
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -41,7 +39,6 @@ public class Bunny : MonoBehaviour
 
         extraJumps = extraJumpsValue;
     }
-
 
     void Update()
     {
@@ -163,5 +160,11 @@ public class Bunny : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("Test");
     }
 
-   
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("BouncePad"))
+        {
+            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce * 2f);
+        }
+    }
 }
