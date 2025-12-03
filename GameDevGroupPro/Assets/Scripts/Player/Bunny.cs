@@ -29,6 +29,12 @@ public class Bunny : MonoBehaviour
     private Animator animator;
     private GameManager gameManager;
 
+    public float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
+    public float jumpBufferTime = 0.15f;
+    private float jumpBufferCounter; 
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -57,23 +63,37 @@ public class Bunny : MonoBehaviour
             //moveInput(Vector3.right);
         }
 
-        //healthImage.fillAmount = health / 100f;// <--------------------------new by D
-
         // Reset extra jumps when grounded
         if (isGrounded)
         {
+            coyoteTimeCounter = coyoteTime;
             extraJumps = extraJumpsValue;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
         }
 
         // --- Jump & Double Jump ---
         // If Space is pressed:
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (jumpBufferCounter > 0f)
         {
-            if (isGrounded)
+            if (coyoteTimeCounter > 0f)
             {
                 // Normal jump
                 rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
                 SoundManager.Instance.PlaySFX("JUMP");
+                coyoteTimeCounter = 0f;
+                jumpBufferCounter = 0f; 
             }
             else if (extraJumps > 0)
             {
@@ -81,6 +101,7 @@ public class Bunny : MonoBehaviour
                 rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
                 extraJumps--; // Reduce available extra jumps
                 SoundManager.Instance.PlaySFX("JUMP");
+                jumpBufferCounter = 0f; 
             }
         }
 
@@ -120,6 +141,7 @@ public class Bunny : MonoBehaviour
             if (rigidbody.linearVelocityY > 0)
             {
                 animator.Play("Player_Jump");
+            
             }
             else
             {
@@ -127,6 +149,7 @@ public class Bunny : MonoBehaviour
             }
         }
     }
+  
 
     // detect collision with the player 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -165,7 +188,7 @@ public class Bunny : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("BouncePad"))
+        if (collision.CompareTag("BouncePad"))
         {
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce * 2f);
         }
