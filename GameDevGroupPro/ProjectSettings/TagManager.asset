@@ -8,6 +8,7 @@ TagManager:
   - Damage
   - Carrot
   - Gem
+  - BouncePad
   layers:
   - Default
   - TransparentFX

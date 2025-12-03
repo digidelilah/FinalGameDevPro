@@ -13,8 +13,6 @@ public class PowerUp : MonoBehaviour
                 Destroy(gameObject);
                 gameManager = FindFirstObjectByType<GameManager>();
                 gameManager.UpdateBunnyHealth(player.health);
- 
-
 
         }
     }
