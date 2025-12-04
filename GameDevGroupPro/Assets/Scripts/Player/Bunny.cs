@@ -185,6 +185,7 @@ public class Bunny : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("Test");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level3");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
