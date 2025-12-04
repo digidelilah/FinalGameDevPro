@@ -20,9 +20,7 @@ public class Bunny : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
-    //public Image healthImage; // <--------------------------new by D
-
-
+ 
     private SpriteRenderer spriteRenderer; 
     private new Rigidbody2D rigidbody;
     private bool isGrounded;
