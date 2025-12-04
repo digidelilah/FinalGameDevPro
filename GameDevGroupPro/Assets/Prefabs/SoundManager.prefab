@@ -153,3 +153,5 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b6d2ea8d304d148f48e5c9254de0ec6d, type: 3}
   - key: CHERRY
     clip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  - key: SHROOM
+    clip: {fileID: 8300000, guid: fd756b7f576b14641a6a60c8ec03d86e, type: 3}
