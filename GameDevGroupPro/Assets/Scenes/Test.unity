@@ -1059,6 +1059,10 @@ PrefabInstance:
       propertyPath: health
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3829427849864934838, guid: 70486772345c3994f945d8403d33b904, type: 3}
+      propertyPath: jumpForce
+      value: 5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7440054978598770186, guid: 70486772345c3994f945d8403d33b904, type: 3}
       propertyPath: m_LocalScale.x
       value: 5

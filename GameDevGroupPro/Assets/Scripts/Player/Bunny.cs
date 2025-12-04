@@ -10,7 +10,8 @@ public class Bunny : MonoBehaviour
     public int health = 3;
 
     // --- Jump variables ---
-    public float jumpForce = 8f;           // Base jump force (vertical speed)
+    public float jumpForce = 8.5f;         // Base jump force (vertical speed)
+    public float jumpContinuesForce = 1f;
     public int extraJumpsValue = 1;        // How many extra jumps allowed (1 = double jump, 2 = triple jump)
     private int extraJumps;                // Counter for jumps left
 
@@ -105,6 +106,12 @@ public class Bunny : MonoBehaviour
             }
         }
 
+        if(Input.GetKey(KeyCode.Space) && rigidbody.linearVelocityY > 0)
+        {
+            rigidbody.AddForceY(jumpContinuesForce);
+        }
+
+
 
         // --- Ground check ---
         // Create an invisible circle at the GroundCheck position.
@@ -120,8 +127,16 @@ public class Bunny : MonoBehaviour
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
         }*/
 
-
         SetAnimation(moveInput);
+
+        if(rigidbody.linearVelocityY < 0)
+        {
+            rigidbody.gravityScale = 2f;
+        }
+        else
+        {
+            rigidbody.gravityScale = 1f;
+        }
     }
     private void SetAnimation(float moveInput)
     {
