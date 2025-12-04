@@ -197,10 +197,8 @@ public class Bunny : MonoBehaviour
     private void Die()
     {
         // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); // may be renamed to our own scenes for testing
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Test");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level3");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -211,4 +209,6 @@ public class Bunny : MonoBehaviour
             SoundManager.Instance.PlaySFX("SHROOM");
         }
     }
+
+
 }
