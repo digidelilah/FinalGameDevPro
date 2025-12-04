@@ -9,6 +9,7 @@ TagManager:
   - Carrot
   - Gem
   - BouncePad
+  - pointText
   layers:
   - Default
   - TransparentFX
