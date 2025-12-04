@@ -40,6 +40,7 @@ public class Enemies : MonoBehaviour
             if (gameObject.tag == "Damage")
             {
                 animator.Play("Slug_Death");
+                animator.Play("Bee_Death");
                 Destroy(gameObject, 0.5f);
             }
         }
