@@ -132,11 +132,11 @@ Transform:
   m_GameObject: {fileID: 1406905354063964675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.2400005, y: 0, z: 0}
+  m_LocalPosition: {x: 10.209999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1247930222738727955}
+  m_Father: {fileID: 5441415637419551829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3548214910972657023
 SpriteRenderer:
@@ -243,6 +243,7 @@ Transform:
   m_Children:
   - {fileID: 5481373086509958058}
   - {fileID: 1247930222738727955}
+  - {fileID: 1284475223579362741}
   m_Father: {fileID: 1091025321307603230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &637560413747149651
@@ -347,8 +348,7 @@ Transform:
   m_LocalPosition: {x: 6.97, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1284475223579362741}
+  m_Children: []
   m_Father: {fileID: 5441415637419551829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5528985217409959707
@@ -450,11 +450,11 @@ Transform:
   m_GameObject: {fileID: 2596912690264989447}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8811883, y: 0, z: 0}
+  m_LocalPosition: {x: 1.8688116, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2413200927890436595}
+  m_Father: {fileID: 540055377689718657}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4699744770699509040
 SpriteRenderer:
@@ -562,6 +562,7 @@ Transform:
   - {fileID: 708595079187205044}
   - {fileID: 8691791139573794058}
   - {fileID: 2413200927890436595}
+  - {fileID: 671016159037151394}
   m_Father: {fileID: 1091025321307603230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1587079643749779690
@@ -771,8 +772,7 @@ Transform:
   m_LocalPosition: {x: 3.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 671016159037151394}
+  m_Children: []
   m_Father: {fileID: 540055377689718657}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8584611513304897261
