@@ -1,39 +1,49 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI; // <--------------------------new by D
+using UnityEngine.UI;
+using UnityEditor.Experimental.GraphView; // <--------------------------new by D
 
 
 public class Bunny : MonoBehaviour
 {
-    public int health = 100;
+    public int carrot;
+    public int health = 3;
 
-    public int carrots; // <--------------- new by R
+    // --- Jump variables ---
+    public float jumpForce = 8.5f;         // Base jump force (vertical speed)
+    public float jumpContinuesForce = 1f;
+    public int extraJumpsValue = 1;        // How many extra jumps allowed (1 = double jump, 2 = triple jump)
+    private int extraJumps;                // Counter for jumps left
+
     public float moveSpeed = 4f;
-    public float jumpForce = 8f;
+    
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
-    public Image healthImage; // <--------------------------new by D
-
-
+ 
     private SpriteRenderer spriteRenderer; 
     private new Rigidbody2D rigidbody;
     private bool isGrounded;
 
     private Animator animator;
+    private GameManager gameManager;
 
-    public int extraJumpsValue = 1;
-    private int extraJumps;
+    public float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
+    public float jumpBufferTime = 0.15f;
+    private float jumpBufferCounter; 
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        gameManager = FindFirstObjectByType<GameManager>();
+        gameManager.UpdateBunnyHealth(health);
 
         extraJumps = extraJumpsValue;
     }
-
 
     void Update()
     {
@@ -52,23 +62,53 @@ public class Bunny : MonoBehaviour
             //moveInput(Vector3.right);
         }
 
-        healthImage.fillAmount = health / 100f;// <--------------------------new by D
-
+        // Reset extra jumps when grounded
         if (isGrounded)
         {
+            coyoteTimeCounter = coyoteTime;
             extraJumps = extraJumpsValue;
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        else
         {
-            if (isGrounded)
-                rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
-            else if (extraJumps >0)
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
+        // --- Jump & Double Jump ---
+        // If Space is pressed:
+        if (jumpBufferCounter > 0f)
+        {
+            if (coyoteTimeCounter > 0f)
             {
+                // Normal jump
                 rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
-                extraJumps--;
+                SoundManager.Instance.PlaySFX("JUMP");
+                coyoteTimeCounter = 0f;
+                jumpBufferCounter = 0f; 
+            }
+            else if (extraJumps > 0)
+            {
+                // Extra jump (double or triple depending on extraJumpsValue)
+                rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
+                extraJumps--; // Reduce available extra jumps
+                SoundManager.Instance.PlaySFX("JUMP");
+                jumpBufferCounter = 0f; 
             }
         }
+
+        if(Input.GetKey(KeyCode.Space) && rigidbody.linearVelocityY > 0)
+        {
+            rigidbody.AddForceY(jumpContinuesForce);
+        }
+
 
 
         // --- Ground check ---
@@ -78,15 +118,23 @@ public class Bunny : MonoBehaviour
 
         // --- Jump ---
         // If player is grounded AND the Jump button (Spacebar by default) is pressed:
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        /*if (isGrounded && Input.GetButtonDown("Jump"))
         {
             // Set vertical velocity to jumpForce (launch upward).
             // Horizontal velocity stays the same.
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
-        }
-
+        }*/
 
         SetAnimation(moveInput);
+
+        if(rigidbody.linearVelocityY < 0)
+        {
+            rigidbody.gravityScale = 2f;
+        }
+        else
+        {
+            rigidbody.gravityScale = 1f;
+        }
     }
     private void SetAnimation(float moveInput)
     {
@@ -106,6 +154,7 @@ public class Bunny : MonoBehaviour
             if (rigidbody.linearVelocityY > 0)
             {
                 animator.Play("Player_Jump");
+            
             }
             else
             {
@@ -113,21 +162,25 @@ public class Bunny : MonoBehaviour
             }
         }
     }
+  
 
     // detect collision with the player 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Damage")
         {
-            health -= 25;
+            health -= 1;
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
             StartCoroutine(BlinkRed());
-
-        if(health <= 0)
-        {
-            Die();
+            gameManager.UpdateBunnyHealth(health);
+            
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                Die();
+            }
         }
-        }
+        
     }
 
     private IEnumerator BlinkRed()
@@ -135,12 +188,25 @@ public class Bunny : MonoBehaviour
         spriteRenderer.color = Color.red;
         animator.Play("Player_Hurt");
         yield return new WaitForSeconds(0.1f);
+        SoundManager.Instance.PlaySFX("HURT");
         spriteRenderer.color = Color.white;
     }
     
     private void Die()
     {
         // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); // may be renamed to our own scenes for testing
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Dayna");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BouncePad"))
+        {
+            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce * 2f);
+            SoundManager.Instance.PlaySFX("SHROOM");
+        }
+    }
+
+
 }
