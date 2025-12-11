@@ -42,6 +42,7 @@ public class Enemies : MonoBehaviour
                 animator.Play("Slug_Death");
                 animator.Play("Bee_Death");
                 Destroy(gameObject, 0.5f);
+                player.health += 1; 
             }
         }
     }

@@ -14,7 +14,7 @@ public class PowerUp : MonoBehaviour
                 gameManager = FindFirstObjectByType<GameManager>();
                 gameManager.UpdateBunnyHealth(player.health);
                 SoundManager.Instance.PlaySFX("CHERRY");
-            //eee
+            
         }
     }
 }
