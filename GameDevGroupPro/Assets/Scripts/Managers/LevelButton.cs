@@ -7,7 +7,7 @@ public class LevelButton : MonoBehaviour
     {
         Button btn = GetComponent<Button>();
 
-        if(PlayerPrefs.GetInt("LevelReached") < level)
+        if(PlayerPrefs.GetInt("LevelReached") !>= level)
         {
             btn.interactable = false; 
         }
